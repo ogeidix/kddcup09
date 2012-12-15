@@ -1,0 +1,9 @@
+function [toylabel, appentencyLabel, churnLabel, upsellingLabel] = LoadLabels()
+    appentency = fullfile('data','Labels','orange_small_train_appetency.labels');
+    churn      = fullfile('data','Labels','orange_small_train_churn.labels');
+    upselling  = fullfile('data','Labels','orange_small_train_upselling.labels');
+    toy        = fullfile('data','Labels','orange_train_toy.labels');
+    appentencyLabel = load(appentency);
+    churnLabel      = load(churn);
+    upsellingLabel  = load(upselling);
+    toylabel        = load(toy);

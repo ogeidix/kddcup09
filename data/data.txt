@@ -1,0 +1,52 @@
+This is a data mirror for the KDD cup 2009
+http://www.kddcup-orange.com/
+Please register on the web site before downloading data otherwise we will not be able to notify you if there are any changes in the rules or any problem with the competition.
+
+**Disclaimer**: The Matlab version is provided by Isabelle Guyon with no guarantee that it is exactly identical to the data provided on the website of the challenge, which remains the official data release. 
+
+**Warning to Matlab users:** It will be hard to work on these data with Matlab without enough memory. For the large dataset, I can load the chunks of data in memory in my laptop, but I have a lot of RAM and swap space (I have 512 MB of RAM and 2GB of swap space). If you have memory problems:
+- Try to increase your swap space
+- Try to find a computer with more RAM and a big disk to get a lot of swap space
+- or, abandon the idea of working with Matlab (sight).
+
+**Note:** There is a total of 50'000 examples in the training data and in the test data. For the large dataset, there are 15'000 variables, including 14'740 numerical variables and 260 categorical variables. Some variables are constant or all missing, for instance:
+load('orange_large_categorical_train.mat');
+Xtr=X;
+load('orange_large_categorical_test.mat');
+Xte=X;
+X=[Xtr;Xte];
+for k=1:size(X, 2), uk(k)=length(unique(X(:,k))); end
+length(find(uk==1))
+ans = 67 
+For the small dataset, there are 230 variables, 190 variables are numerical and the last 40 are categorical. 
+
+MATLAB FORMAT:
+-- LARGE DATASET
+1) All the 260 categorical variables numerically coded. The missing values are coded as zeros. The other categories are mapped to positive integers.
+orange_large_categorical_train.mat
+orange_large_categorical_test.mat
+
+2) The 14740 numerical variables, split into 10 chunks for the training and for the test set. The missing variables are coded as NaN.
+orange_large_train[1-10].mat
+orange_large_test[1-10].mat
+
+-- SMALL DATASET
+All the variables are in one matrix; the categorical variables are converted to numbers.
+orange_small_train.mat
+orange_small_test.mat
+
+NUMERICAL FORMAT FOR THE CATEGORICAL VARIABLES:
+Text format.
+All the 260 categorical variables numerically coded. The missing values are coded as zeros. The other categories are mapped to positive integers.
+orange_large_categorical_train.zip
+orange_large_categorical_test.zip
+
+ORIGINAL DATA:
+orange_large_train.data.chunk[1-5].zip
+orange_large_test.data.chunk[1-5].zip
+The first line of the first chunk contains a test header. All chunks must be concatenated to get the whole dataset.
+
+Good luck!
+
+Isabelle
+(send questions to kddcup09__a_t__clopinet__d_o_t__com)
